@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Map, { Source, Layer, useMap } from 'react-map-gl/maplibre';
+import Map, { Source, Layer, useMap, NavigationControl } from 'react-map-gl/maplibre';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../../store';
 import { fadeUp, DEFAULT_VIEWPORT } from '../../../motion/variants';
@@ -220,7 +220,7 @@ const SatelliteSection: React.FC = () => {
             ))}
           </div>
 
-          {(['temperature', 'aqi', 'pm25', 'no2', 'rain', 'wind_flow'] as AppLayer[]).map((layer) => (
+          {(['temperature', 'no2', 'rain', 'wind_flow'] as AppLayer[]).map((layer) => (
             <button
               key={layer}
               onClick={() => setActiveLayer(layer)}
@@ -254,6 +254,7 @@ const SatelliteSection: React.FC = () => {
             cursor={hoveredCity ? 'pointer' : 'grab'}
           >
             <MapController view={activeView} />
+            <NavigationControl position="top-right" showCompass={false} />
             {/* Smooth Continuous Raster Image Field */}
             {rasterUrl && (
               <Source id="meteo-image" type="image" url={rasterUrl} coordinates={rasterCoords}>
