@@ -8,7 +8,7 @@ import PollutionTransportSection from './sections/PollutionTransportSection';
 import ForecastSection from './sections/ForecastSection';
 import AlertCenter from '../../components/alerts/AlertCenter';
 import DataSourcesStrip from './sections/DataSourcesStrip';
-import TimeMachineSlider from '../../components/common/TimeMachineSlider';
+
 
 /**
  * Home — Atmospheric Intelligence Platform
@@ -35,7 +35,7 @@ const Home: React.FC = () => (
     <ForecastSection />
     <AlertCenter />
     <DataSourcesStrip />
-    <TimeMachineSlider />
+
   </PageLayout>
 );
 
