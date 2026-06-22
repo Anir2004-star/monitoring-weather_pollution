@@ -1,73 +1,33 @@
-# React + TypeScript + Vite
+# 🌍 Air Pollution Monitoring Command Center
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A real-time, interactive atmospheric intelligence dashboard designed to monitor air quality, track pollution sources, and visualize weather patterns across India.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+*   **Atmospheric Sky Engine:** Dynamic background visuals reacting to live weather (clear, rain, thunderstorms, fog, heatwaves).
+*   **Pollution Transport Map:** Interactive Mapbox integration showing real-time wind patterns and pollution flows from emission sources to destinations.
+*   **Regional Forecasting:** Hourly and 7-day weather predictions with mini-summaries and interactive timelines.
+*   **Real-time Alerts:** Critical notifications for hazardous air quality levels and severe weather systems.
+*   **Data Analytics:** Deep insights into AQI, PM2.5, NO₂, and temperature using responsive charts and gauges.
 
-## React Compiler
+## 🛠️ Technology Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+*   **Framework:** React 18 with TypeScript
+*   **Build Tool:** Vite
+*   **Mapping:** React Map GL (Maplibre)
+*   **Animations:** Framer Motion
+*   **Styling:** Custom CSS and responsive design
 
-## Expanding the ESLint configuration
+## 💻 Running Locally
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+To run this project on your own machine:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
+2.  **Start the Development Server**
+    ```bash
+    npm run dev
+    ```
+3.  Open `http://localhost:5173` in your browser.
