@@ -1,0 +1,336 @@
+@import "tailwindcss";
+@import 'maplibre-gl/dist/maplibre-gl.css';
+
+/* ─── Design Tokens ───────────────────────────────────────────────────────── */
+:root {
+  --void:           #020510;
+  --deep:           #040816;
+  --surface-01:     #070D1E;
+  --surface-02:     #0C1530;
+  --border-01:      rgba(255, 255, 255, 0.06);
+  --border-02:      rgba(255, 255, 255, 0.12);
+  
+  --text-primary:   #E8F0FF;
+  --text-secondary: #8B9CC8;
+  --text-tertiary:  #3D4F70;
+  --text-inverse:   #020510;
+
+  --aqi-good:       #00E676;
+  --aqi-moderate:   #FFD54F;
+  --aqi-unhealthy:  #FF7043;
+  --aqi-hazardous:  #D50000;
+}
+
+:root.light-mode {
+  --void:           #F5F7FA;
+  --deep:           #FFFFFF;
+  --surface-01:     #F0F4F8;
+  --surface-02:     #E2E8F0;
+  --border-01:      rgba(0, 0, 0, 0.08);
+  --border-02:      rgba(0, 0, 0, 0.16);
+  
+  --text-primary:   #1A202C;
+  --text-secondary: #4A5568;
+  --text-tertiary:  #718096;
+  --text-inverse:   #FFFFFF;
+}
+
+/* ─── Base Reset ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--deep);
+  color: var(--text-primary);
+  font-family: 'Times New Roman', Times, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* ─── Typography Helpers ─────────────────────────────────────────────────── */
+.mono-data {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* ─── Custom Utilities ───────────────────────────────────────────────────── */
+
+/* Surfaces */
+.surface-01 {
+  background: var(--surface-01);
+  border: 1px solid var(--border-01);
+}
+
+.surface-02 {
+  background: var(--surface-02);
+  border: 1px solid var(--border-01);
+}
+
+/* Gradients */
+.text-gradient-primary {
+  background: linear-gradient(to right, #8A7CFF, #4DEEEA, #7CFF6B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient-primary {
+  background: linear-gradient(to right, #8A7CFF, #4DEEEA, #7CFF6B);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: var(--surface-02); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-02); }
+
+/* Selection */
+/* Selection */
+::selection { background: rgba(138, 124, 255, 0.3); color: #fff; }
+
+/* ─── Glass Surface ──────────────────────────────────────────────────────── */
+.glass {
+  background: rgba(7, 13, 30, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ─── Text Gradient Variants ─────────────────────────────────────────────── */
+.text-gradient-white {
+  background: linear-gradient(to right, #E8F0FF, #8B9CC8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(to right, #4DEEEA, #8A7CFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Orbital Animations ────────────────────────────────────────────────── */
+@keyframes orbit-cw {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes orbit-ccw {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+.orbit-cw  { animation: orbit-cw  12s linear infinite; }
+.orbit-ccw { animation: orbit-ccw  9s linear infinite; }
+
+/* ─── Intelligence briefing mono styles ──────────────────────────────────── */
+.intel-mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   WEATHER CANVAS — Cinematic animations (Indian cities only)
+═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── CLEAR DAY: SVG elements (animated via class) ─────────────────────────── */
+
+/* Sun disc pulse */
+.wc-sun-disc-anim {
+  transform-origin: 222px 58px;
+  animation: wc-sun-pulse 5.5s ease-in-out infinite;
+}
+
+/* Lens flare elements — breathe in sync with sun */
+.wc-flare {
+  animation: wc-flare-breathe 5.5s ease-in-out infinite;
+}
+
+/* Crepuscular light rays — painted over sky SVG */
+.wc-ray {
+  animation: wc-ray-breathe 9s ease-in-out infinite;
+}
+
+/* ── CLOUDY: Cloud layer drift speeds ─────────────────────────────────────── */
+
+/* Back clouds — slowest, furthest away */
+.wc-cloud-back {
+  animation: wc-drift-slow 34s ease-in-out infinite;
+}
+/* Mid clouds */
+.wc-cloud-mid {
+  animation: wc-drift-mid 24s ease-in-out infinite 1.5s;
+}
+/* Front clouds — fastest, closest */
+.wc-cloud-front {
+  animation: wc-drift-fast 18s ease-in-out infinite 0.8s;
+}
+
+/* ── STARS: SVG circles — opacity-only twinkle (no scale = no cartoon look) ─ */
+.wc-star {
+  animation: wc-star-real ease-in-out infinite;
+}
+
+/* ── MOON: Breathing glow halo ────────────────────────────────────────────── */
+.wc-moon-pulse {
+  animation: wc-moon-breathe 8s ease-in-out infinite;
+}
+
+/* ── RAIN: Diagonal streaks ───────────────────────────────────────────────── */
+.wc-rain {
+  position: absolute;
+  top: -28px;
+  width: 1.2px;
+  background: linear-gradient(to bottom, transparent, rgba(160,205,235,0.62));
+  border-radius: 1px;
+  transform: rotate(-18deg);
+  animation: wc-rain-fall linear infinite;
+  z-index: 2;
+}
+
+/* Heavier storm rain */
+.wc-rain-storm {
+  width: 1.4px;
+  transform: rotate(-24deg);
+  background: linear-gradient(to bottom, transparent, rgba(145,195,228,0.70));
+}
+
+/* ── THUNDERSTORM: SVG lightning bolts ────────────────────────────────────── */
+
+/* Bolt 1 — fires first */
+.wc-bolt-1 {
+  animation: wc-bolt 5.8s ease-in-out infinite;
+}
+
+/* Bolt 2 — offset so it fires separately */
+.wc-bolt-2 {
+  animation: wc-bolt 5.8s ease-in-out infinite 2.6s;
+}
+
+/* Bolt 3 — faint background, different timing */
+.wc-bolt-3 {
+  animation: wc-bolt-faint 7.2s ease-in-out infinite 1.4s;
+}
+
+/* Full-canvas flash that fires with bolt-1 */
+.wc-thunder-flash {
+  animation: wc-thunder-flash 5.8s ease-in-out infinite;
+}
+
+/* Wind lines */
+.wc-wind {
+  position: absolute;
+  left: 3%;
+  height: 1.5px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.20), transparent);
+  border-radius: 2px;
+  animation: wc-wind-gust 2.2s ease-in-out infinite;
+  z-index: 3;
+}
+
+/* ═══════════════════════ KEYFRAMES ═══════════════════════════════════════ */
+
+/* Clear Day */
+@keyframes wc-sun-pulse {
+  0%, 100% { transform: scale(1.000); opacity: 1.00; }
+  50%       { transform: scale(1.055); opacity: 0.92; }
+}
+
+@keyframes wc-flare-breathe {
+  0%, 100% { opacity: 0.65; }
+  50%       { opacity: 1.00; }
+}
+
+@keyframes wc-ray-breathe {
+  0%, 100% { opacity: 0.32; }
+  45%       { opacity: 0.62; }
+  70%       { opacity: 0.45; }
+}
+
+/* Clouds */
+@keyframes wc-drift-slow {
+  0%   { transform: translateX(0px); }
+  35%  { transform: translateX(10px); }
+  65%  { transform: translateX(6px); }
+  100% { transform: translateX(0px); }
+}
+@keyframes wc-drift-mid {
+  0%   { transform: translateX(0px); }
+  40%  { transform: translateX(14px); }
+  60%  { transform: translateX(9px); }
+  100% { transform: translateX(0px); }
+}
+@keyframes wc-drift-fast {
+  0%   { transform: translateX(0px); }
+  42%  { transform: translateX(18px); }
+  58%  { transform: translateX(12px); }
+  100% { transform: translateX(0px); }
+}
+
+/* Stars — pure opacity flicker, NO scale (prevents cartoon look) */
+@keyframes wc-star-real {
+  0%,  100% { opacity: 0.12; }
+  30%        { opacity: 0.55; }
+  55%        { opacity: 1.00; }
+  80%        { opacity: 0.45; }
+}
+
+/* Moon */
+@keyframes wc-moon-breathe {
+  0%, 100% { opacity: 0.88; }
+  50%       { opacity: 1.00; }
+}
+
+/* Rain */
+@keyframes wc-rain-fall {
+  0%   { top: -28px; opacity: 0; }
+  6%   { opacity: 0.85; }
+  90%  { opacity: 0.65; }
+  100% { top: 112%;   opacity: 0; }
+}
+
+/* Thunder — lightning bolt flashes: double-strike pattern */
+@keyframes wc-bolt {
+  /* Long quiet period, then rapid double flash */
+  0%,  84%,  100% { opacity: 0; }
+  85%             { opacity: 0.95; }  /* First strike */
+  86%             { opacity: 0.10; }  /* brief dim */
+  87%             { opacity: 0.90; }  /* Second strike */
+  88%             { opacity: 0; }     /* Off */
+}
+
+@keyframes wc-bolt-faint {
+  0%,  82%, 100%  { opacity: 0; }
+  83%             { opacity: 0.60; }
+  84%             { opacity: 0.08; }
+  85%             { opacity: 0.55; }
+  86%             { opacity: 0; }
+}
+
+/* Full-canvas blue-white flash — synchronized with bolt-1 */
+@keyframes wc-thunder-flash {
+  0%,  84%, 100%  { background: rgba(200,220,255,0.00); }
+  85%             { background: rgba(200,220,255,0.55); }  /* Flash peak */
+  86%             { background: rgba(200,220,255,0.06); }  /* Quick dim */
+  87%             { background: rgba(200,220,255,0.42); }  /* Second flash */
+  88%             { background: rgba(200,220,255,0.00); }  /* Off */
+}
+
+/* Wind */
+@keyframes wc-wind-gust {
+  0%   { transform: translateX(-30px); opacity: 0; }
+  25%  { opacity: 1; }
+  75%  { opacity: 0.60; }
+  100% { transform: translateX(70px); opacity: 0; }
+}
+
