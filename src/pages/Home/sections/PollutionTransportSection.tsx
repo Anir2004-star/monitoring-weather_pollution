@@ -199,13 +199,13 @@ const PollutionTransportSection: React.FC = () => {
               >
                 {/* Raster Overlays for AQI, Temp, etc. */}
                 {rasterUrl && (
-                  <Source id="meteo-image" type="image" url={rasterUrl} coordinates={rasterCoords}>
+                  <Source key="meteo-image" id="meteo-image" type="image" url={rasterUrl} coordinates={rasterCoords}>
                     <Layer {...rasterLayerStyle} />
                   </Source>
                 )}
 
                 {/* State/Country Boundaries Overlay */}
-                <Source id="india-official-boundary" type="geojson" data="https://raw.githubusercontent.com/datameet/maps/master/Country/india-composite.geojson">
+                <Source key="india-official-boundary" id="india-official-boundary" type="geojson" data="https://raw.githubusercontent.com/datameet/maps/master/Country/india-composite.geojson">
                   <Layer 
                     id="india-border-line" 
                     type="line" 
@@ -218,7 +218,7 @@ const PollutionTransportSection: React.FC = () => {
                 </Source>
 
                 {/* Cities Source */}
-                <Source id="cities" type="geojson" data={MOCK_CITIES}>
+                <Source key="cities" id="cities" type="geojson" data={MOCK_CITIES}>
                   <Layer {...cityLabelLayer} />
                 </Source>
 

@@ -257,17 +257,17 @@ const SatelliteSection: React.FC = () => {
             <NavigationControl position="top-right" showCompass={false} />
             {/* Smooth Continuous Raster Image Field */}
             {rasterUrl && (
-              <Source id="meteo-image" type="image" url={rasterUrl} coordinates={rasterCoords}>
+              <Source key="meteo-image" id="meteo-image" type="image" url={rasterUrl} coordinates={rasterCoords}>
                 <Layer {...rasterLayerStyle} />
               </Source>
             )}
 
             {/* 3D Terrain Hillshading (like MS Weather) */}
-            <Source id="terrain" type="raster-dem" url="https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png" tileSize={256} />
+            <Source key="terrain" id="terrain" type="raster-dem" url="https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png" tileSize={256} />
             <Layer {...hillshadeStyle} />
 
             {/* Official Survey of India Boundary Overlay */}
-            <Source id="india-official-boundary" type="geojson" data="https://raw.githubusercontent.com/datameet/maps/master/Country/india-composite.geojson">
+            <Source key="india-official-boundary" id="india-official-boundary" type="geojson" data="https://raw.githubusercontent.com/datameet/maps/master/Country/india-composite.geojson">
               <Layer 
                 id="india-border-line" 
                 type="line" 
@@ -280,7 +280,7 @@ const SatelliteSection: React.FC = () => {
             </Source>
 
             {/* Sparse Cities for Labels & Hover */}
-            <Source id="cities" type="geojson" data={MOCK_CITIES}>
+            <Source key="cities" id="cities" type="geojson" data={MOCK_CITIES}>
               <Layer {...cityLabelLayer} />
               <Layer {...citySubLabelLayer} />
             </Source>

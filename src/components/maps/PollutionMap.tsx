@@ -110,7 +110,7 @@ const PollutionMap: React.FC<PollutionMapProps> = ({ layerType = 'aqi' }) => {
         style={{ width: '100%', height: '100%' }}
         attributionControl={false}
       >
-        <Source id="pollution" type="geojson" data={geojsonData}>
+        <Source key="pollution" id="pollution" type="geojson" data={geojsonData}>
           <Layer {...heatmapLayer} />
         </Source>
         
