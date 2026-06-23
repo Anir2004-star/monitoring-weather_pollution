@@ -51,7 +51,7 @@ const isDaytime = (lat: number, lng: number, at: Date = new Date()): boolean => 
  * Returns the golden-hour condition during sunrise/sunset transition windows.
  * Outside transition → returns null (pick from normal day/night pool).
  */
-const getTransitionCondition = (lat: number, lng: number, at: Date = new Date()): WeatherCondition | null => {
+export const getTransitionCondition = (lat: number, lng: number, at: Date = new Date()): WeatherCondition | null => {
   try {
     const times = SunCalc.getTimes(at, lat, lng);
     const now = at.getTime();
