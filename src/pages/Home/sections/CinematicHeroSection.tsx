@@ -122,7 +122,7 @@ const CinematicHeroSection: React.FC = () => {
         <h1 
           ref={headlineRef}
           className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight max-w-5xl"
-          style={{ fontFamily: '"Playfair Display", serif' }}
+          style={{ fontFamily: '"Inter", sans-serif' }}
         >
           Earth's atmosphere, <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-[#67E8F9]">revealed in real time.</span>

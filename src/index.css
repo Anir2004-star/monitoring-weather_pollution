@@ -47,7 +47,7 @@ html, body, #root {
 body {
   background-color: var(--deep);
   color: var(--text-primary);
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;

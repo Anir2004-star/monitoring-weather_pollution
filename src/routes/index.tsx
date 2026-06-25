@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 
 const Home = lazy(() => import('../pages/Home'));
+const Dashboard = lazy(() => import('../pages/Dashboard'));
 
 const PageLoader = () => (
   <div
@@ -21,6 +22,14 @@ const router = createBrowserRouter([
     element: (
       <Suspense fallback={<PageLoader />}>
         <Home />
+      </Suspense>
+    ),
+  },
+  {
+    path: '/dashboard',
+    element: (
+      <Suspense fallback={<PageLoader />}>
+        <Dashboard />
       </Suspense>
     ),
   },
