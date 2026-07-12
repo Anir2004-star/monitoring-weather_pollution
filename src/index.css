@@ -19,6 +19,32 @@
   --aqi-moderate:   #FFD54F;
   --aqi-unhealthy:  #FF7043;
   --aqi-hazardous:  #D50000;
+  
+  /* ─── Earth Interface Tokens ────────────────────────────────────────────── */
+  --ei-bg:            #0B0907;
+  --ei-bg-secondary:  #15120F;
+  --ei-surface:       #1D1914;
+  --ei-accent-primary: #B8862F; /* Burnished Gold */
+  --ei-accent-secondary:#6F7D3A; /* Olive Green */
+  --ei-highlight:     #B75A3A; /* Burnt Clay */
+  --ei-copper:        #8C5A2B;
+  --ei-ivory:         #F5F1E7;
+  --ei-ash:           #A59C8C;
+  --ei-critical:      #A4372C;
+  --ei-success:       #5C7540;
+  --ei-warning:       #C8872A;
+  --ei-border:        rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Earth Interface Typography ─────────────────────────────────────────── */
+.font-editorial {
+  font-family: 'Playfair Display', serif;
+}
+.font-body {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+.font-telemetry {
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 :root.light-mode {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { PageLayout } from '../../components/layouts';
-import AppleStyleLanding from './sections/AppleStyleLanding';
+import EarthInterface from './earth-interface/EarthInterface';
 
 const Home: React.FC = () => {
   useEffect(() => {
@@ -9,8 +9,8 @@ const Home: React.FC = () => {
 
   return (
     <PageLayout>
-      <div className="bg-[#020617] font-sans text-white overflow-hidden">
-        <AppleStyleLanding />
+      <div className="bg-[var(--ei-bg)] font-sans text-white overflow-hidden">
+        <EarthInterface />
       </div>
     </PageLayout>
   );
