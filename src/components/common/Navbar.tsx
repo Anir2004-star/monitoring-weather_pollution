@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-10 h-16"
       style={{
-        background: scrolled ? 'rgba(4, 8, 22, 0.85)' : 'transparent',
+        background: scrolled ? 'rgba(11, 9, 7, 0.85)' : 'transparent',
         borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid transparent',
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
         transition: 'all 0.4s ease',
@@ -33,10 +33,7 @@ const Navbar: React.FC = () => {
     >
       {/* Logo */}
       <Link to="/" className="flex items-center gap-3 group">
-        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00E5FF] to-[#0A2A5C] flex items-center justify-center border border-[rgba(255,255,255,0.1)] shadow-[0_0_15px_rgba(0,229,255,0.3)] group-hover:shadow-[0_0_25px_rgba(0,229,255,0.5)] transition-all">
-          <span className="text-white text-xs font-bold tracking-wider">ISRO</span>
-        </div>
-        <span className="text-[14px] font-semibold tracking-[0.15em] text-[#E8F0FF]">
+        <span className="text-[14px] font-semibold tracking-[0.15em] text-[var(--ei-ivory)]">
           ATMOS
         </span>
       </Link>
@@ -50,7 +47,7 @@ const Navbar: React.FC = () => {
             <Link
               key={label}
               to={toPath}
-              className="text-[13px] font-medium tracking-wide transition-colors duration-200 text-[#8B9CC8] hover:text-[#00E5FF]"
+              className="text-[13px] font-medium tracking-wide transition-colors duration-200 text-[#8B9CC8] hover:text-[var(--ei-accent-primary)]"
             >
               {label}
             </Link>
@@ -63,7 +60,7 @@ const Navbar: React.FC = () => {
         {location.pathname !== '/dashboard' && (
           <Link 
             to="/dashboard"
-            className="hidden sm:flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#00E5FF] to-[#0A2A5C] text-white text-[13px] font-medium tracking-wide hover:shadow-[0_0_20px_rgba(0,229,255,0.4)] transition-all border border-[rgba(0,229,255,0.3)]"
+            className="hidden sm:flex items-center gap-2 px-5 py-2 rounded-full bg-[var(--ei-accent-primary)] text-[var(--ei-bg)] text-[13px] font-medium tracking-wide hover:bg-[var(--ei-ivory)] hover:shadow-[0_0_20px_rgba(184,134,47,0.4)] transition-all border border-transparent"
           >
             Launch Dashboard
           </Link>

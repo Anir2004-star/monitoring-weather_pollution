@@ -68,10 +68,11 @@ html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: var(--ei-bg);
 }
 
 body {
-  background-color: var(--deep);
+  background-color: var(--ei-bg);
   color: var(--text-primary);
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
