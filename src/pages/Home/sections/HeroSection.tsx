@@ -26,7 +26,7 @@ const HeroSection: React.FC = () => (
   <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-14">
 
     {/* Background */}
-    <div className="absolute inset-0 bg-[#040816] z-0" />
+    <div className="absolute inset-0 bg-[var(--deep)] z-0" />
     <ParticleField count={80} />
 
     {/* Subtle radial glow behind Earth */}

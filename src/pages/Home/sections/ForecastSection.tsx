@@ -19,7 +19,7 @@ const ForecastSection: React.FC = () => {
   const avgForecast = Math.round(data.reduce((acc, curr) => acc + curr.aqi, 0) / data.length);
 
   return (
-    <section id="forecast" className="relative py-16 px-6 bg-[#040816]">
+    <section id="forecast" className="relative py-16 px-6 bg-[var(--deep)]">
       <div className="max-w-[1280px] mx-auto">
         
         {/* Header */}
@@ -38,7 +38,7 @@ const ForecastSection: React.FC = () => {
             <select 
               value={activeCity} 
               onChange={(e) => setActiveCity(e.target.value)}
-              className="appearance-none bg-[#070D1E] border border-[rgba(255,255,255,0.12)] text-[#E8F0FF] text-[18px] font-semibold px-4 py-2 pr-10 rounded-lg outline-none focus:border-[#4DEEEA] transition-colors cursor-pointer"
+              className="appearance-none bg-[var(--surface-01)] border border-[rgba(255,255,255,0.12)] text-[#E8F0FF] text-[18px] font-semibold px-4 py-2 pr-10 rounded-lg outline-none focus:border-[#4DEEEA] transition-colors cursor-pointer"
             >
               {mockCities.map(c => (
                 <option key={c.id} value={c.id}>{c.name}</option>
@@ -50,7 +50,7 @@ const ForecastSection: React.FC = () => {
           </div>
 
           {/* Time Toggle */}
-          <div className="flex bg-[#070D1E] p-1 rounded-lg border border-[rgba(255,255,255,0.06)]">
+          <div className="flex bg-[var(--surface-01)] p-1 rounded-lg border border-[rgba(255,255,255,0.06)]">
             {(['24H', '7D'] as Mode[]).map((m) => (
               <button
                 key={m}

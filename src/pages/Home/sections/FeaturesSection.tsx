@@ -35,7 +35,7 @@ const FEATURES = [
 
 const FeaturesSection: React.FC = () => {
   return (
-    <section id="platform" className="relative py-32 px-6 bg-[#040816] overflow-hidden">
+    <section id="platform" className="relative py-32 px-6 bg-[var(--deep)] overflow-hidden">
       <div className="max-w-[1280px] mx-auto relative z-10">
         
         {/* Header Section */}

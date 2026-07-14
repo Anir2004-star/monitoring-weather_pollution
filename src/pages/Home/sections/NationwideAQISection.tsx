@@ -16,7 +16,7 @@ import { mockCities, getAQIColor } from '../../../utils/mockData';
 import { staggerContainerFast, fadeUp, DEFAULT_VIEWPORT } from '../../../motion/variants';
 
 const NationwideAQISection: React.FC = () => (
-  <section id="overview" className="relative py-14 px-6 border-t border-[rgba(255,255,255,0.03)] bg-[#040816]">
+  <section id="overview" className="relative py-14 px-6 border-t border-[rgba(255,255,255,0.03)] bg-[var(--deep)]">
     <div className="max-w-[1280px] mx-auto">
 
       {/* Header */}

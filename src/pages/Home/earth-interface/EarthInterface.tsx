@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, Suspense } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
 import { Stars } from '@react-three/drei';
 import * as THREE from 'three';
@@ -14,6 +15,7 @@ const EarthInterface: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const earthGroupRef = useRef<THREE.Group>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera>(null);
+  const navigate = useNavigate();
   
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const subheadRef = useRef<HTMLParagraphElement>(null);
@@ -123,7 +125,9 @@ const EarthInterface: React.FC = () => {
             <Stars radius={100} depth={50} count={3000} factor={3} saturation={0} fade speed={1} />
           </group>
           <group>
-            <EarthCanvas earthGroupRef={earthGroupRef} />
+            <Suspense fallback={null}>
+              <EarthCanvas earthGroupRef={earthGroupRef} />
+            </Suspense>
           </group>
         </Canvas>
       </div>
@@ -146,11 +150,11 @@ const EarthInterface: React.FC = () => {
             </h1>
             
             <p ref={subheadRef} className="font-body text-lg md:text-xl text-[var(--ei-ash)] max-w-2xl mx-auto leading-relaxed mb-10 drop-shadow-md">
-              An AI-powered environmental intelligence platform combining satellite observations, ground telemetry, and atmospheric reanalysis.
+              An environmental intelligence platform combining satellite observations, ground telemetry, and atmospheric reanalysis.
             </p>
 
             <div ref={buttonRef} className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <button ref={ctaBtn1Ref} className="px-8 py-3 rounded-sm bg-[var(--ei-accent-primary)] text-[#0B0907] font-medium tracking-wide hover:bg-[var(--ei-ivory)] hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(184,134,47,0.3)] transition-all duration-300">
+              <button onClick={() => navigate('/dashboard')} ref={ctaBtn1Ref} className="px-8 py-3 rounded-sm bg-[var(--ei-accent-primary)] text-[#0B0907] font-medium tracking-wide hover:bg-[var(--ei-ivory)] hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(184,134,47,0.3)] transition-all duration-300">
                 Launch Intelligence
               </button>
               <button ref={ctaBtn2Ref} className="px-8 py-3 rounded-sm border border-[var(--ei-border)] bg-[rgba(255,255,255,0.02)] backdrop-blur text-[var(--ei-ash)] font-medium tracking-wide hover:text-[var(--ei-ivory)] hover:bg-[rgba(255,255,255,0.05)] transition-all duration-300">
@@ -216,7 +220,7 @@ const EarthInterface: React.FC = () => {
             <h2 className="font-editorial text-5xl md:text-6xl lg:text-7xl text-[var(--ei-ivory)] leading-tight mb-10">
               Enter the Atmospheric Intelligence Center.
             </h2>
-            <button className="px-10 py-4 rounded-sm bg-[var(--ei-accent-primary)] text-[#0B0907] text-lg font-medium tracking-wide hover:bg-[var(--ei-ivory)] hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(184,134,47,0.4)] transition-all duration-300">
+            <button onClick={() => navigate('/dashboard')} className="px-10 py-4 rounded-sm bg-[var(--ei-accent-primary)] text-[#0B0907] text-lg font-medium tracking-wide hover:bg-[var(--ei-ivory)] hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(184,134,47,0.4)] transition-all duration-300">
               Launch Dashboard
             </button>
           </div>

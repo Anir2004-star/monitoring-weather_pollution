@@ -86,7 +86,7 @@ const PollutionMap: React.FC<PollutionMapProps> = ({ layerType = 'aqi' }) => {
 
   if (!MAPBOX_TOKEN) {
     return (
-      <div className="w-full h-full flex flex-col items-center justify-center bg-[#070D1E] border border-[rgba(255,255,255,0.06)] rounded-2xl p-6 text-center">
+      <div className="w-full h-full flex flex-col items-center justify-center bg-[var(--surface-01)] border border-[rgba(255,255,255,0.06)] rounded-2xl p-6 text-center">
         <p className="text-[#8B9CC8] text-sm mb-2">Mapbox Token Required</p>
         <p className="text-[#3D4F70] text-xs max-w-sm">
           Please add <code className="text-[#E8F0FF]">VITE_MAPBOX_TOKEN</code> to your .env file to view the satellite intelligence map.

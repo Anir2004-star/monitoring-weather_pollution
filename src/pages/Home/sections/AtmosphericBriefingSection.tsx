@@ -76,7 +76,7 @@ const severityBorderColor: Record<BriefingItem['severity'], string> = {
 const AtmosphericBriefingSection: React.FC = () => (
   <section
     id="briefing"
-    className="relative py-12 px-6 bg-[#020510] border-t border-[rgba(255,255,255,0.03)]"
+    className="relative py-12 px-6 bg-[var(--void)] border-t border-[rgba(255,255,255,0.03)]"
   >
     {/* Subtle left-edge glow */}
     <div

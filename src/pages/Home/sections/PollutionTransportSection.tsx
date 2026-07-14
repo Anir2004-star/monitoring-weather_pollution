@@ -129,7 +129,7 @@ const PollutionTransportSection: React.FC = () => {
     : [];
 
   return (
-    <section id="pollution-transport" className="relative py-16 px-6 bg-[#020510] border-t border-[rgba(255,255,255,0.03)] overflow-hidden">
+    <section id="pollution-transport" className="relative py-16 px-6 bg-[var(--void)] border-t border-[rgba(255,255,255,0.03)] overflow-hidden">
       <div className="max-w-[1440px] mx-auto">
         
         {/* Section Header */}
@@ -145,7 +145,7 @@ const PollutionTransportSection: React.FC = () => {
           </div>
           
           {/* Season Toggle */}
-          <div className="flex bg-[#070D1E] p-1 rounded-lg border border-[rgba(255,255,255,0.06)] self-start md:self-auto">
+          <div className="flex bg-[var(--surface-01)] p-1 rounded-lg border border-[rgba(255,255,255,0.06)] self-start md:self-auto">
             {SEASONS.map((season) => (
               <button
                 key={season}
@@ -163,7 +163,7 @@ const PollutionTransportSection: React.FC = () => {
         </div>
 
         {/* 70/30 Main Layout */}
-        <div className="flex flex-col lg:flex-row rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.06)] bg-[#040816] h-[750px] shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+        <div className="flex flex-col lg:flex-row rounded-2xl overflow-hidden border border-[rgba(255,255,255,0.06)] bg-[var(--deep)] h-[750px] shadow-[0_0_50px_rgba(0,0,0,0.5)]">
           
           {/* Left: Map (70%) */}
           <div className="relative w-full lg:w-[70%] h-[400px] lg:h-full">

@@ -29,8 +29,8 @@ const atmosphereShader = {
     varying vec3 vPosition;
     
     void main() {
-      // Basic Fresnel glow
-      float intensity = pow(0.6 - dot(vNormal, vec3(0, 0, 1.0)), 2.5);
+      // Basic Fresnel glow (use max(0.0, ...) to prevent negative power values crashing WebGL)
+      float intensity = pow(max(0.0, 0.6 - dot(vNormal, vec3(0, 0, 1.0))), 2.5);
       vec3 glow = uColor * intensity;
       
       // Atmospheric Scan Wave (runs every 15 seconds)

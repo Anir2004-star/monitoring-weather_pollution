@@ -25,7 +25,7 @@ const DataSourcesStrip: React.FC = () => (
     whileInView={{ opacity: 1 }}
     viewport={DEFAULT_VIEWPORT}
     transition={{ duration: 0.6 }}
-    className="relative border-t border-[rgba(255,255,255,0.06)] bg-[#020510]"
+    className="relative border-t border-[rgba(255,255,255,0.06)] bg-[var(--void)]"
   >
     <div className="max-w-[1280px] mx-auto px-6 py-4">
       <div className="flex flex-wrap items-center gap-x-0 gap-y-3">

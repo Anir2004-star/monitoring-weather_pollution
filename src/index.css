@@ -3,17 +3,17 @@
 
 /* ─── Design Tokens ───────────────────────────────────────────────────────── */
 :root {
-  --void:           #020510;
-  --deep:           #040816;
-  --surface-01:     #070D1E;
-  --surface-02:     #0C1530;
-  --border-01:      rgba(255, 255, 255, 0.06);
-  --border-02:      rgba(255, 255, 255, 0.12);
+  --void:           #0B0907;
+  --deep:           #110E0B;
+  --surface-01:     #181410;
+  --surface-02:     #211B15;
+  --border-01:      rgba(255, 255, 255, 0.05);
+  --border-02:      rgba(255, 255, 255, 0.10);
   
-  --text-primary:   #E8F0FF;
-  --text-secondary: #8B9CC8;
-  --text-tertiary:  #3D4F70;
-  --text-inverse:   #020510;
+  --text-primary:   #F5F1E7;
+  --text-secondary: #A59C8C;
+  --text-tertiary:  #6D6455;
+  --text-inverse:   #0B0907;
 
   --aqi-good:       #00E676;
   --aqi-moderate:   #FFD54F;
@@ -47,20 +47,7 @@
   font-family: 'IBM Plex Mono', monospace;
 }
 
-:root.light-mode {
-  --void:           #F5F7FA;
-  --deep:           #FFFFFF;
-  --surface-01:     #F0F4F8;
-  --surface-02:     #E2E8F0;
-  --border-01:      rgba(0, 0, 0, 0.08);
-  --border-02:      rgba(0, 0, 0, 0.16);
-  
-  --text-primary:   #1A202C;
-  --text-secondary: #4A5568;
-  --text-tertiary:  #718096;
-  --text-inverse:   #FFFFFF;
-}
-
+/* Light mode overrides removed to enforce the global cinematic dark theme everywhere */
 /* ─── Base Reset ─────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 

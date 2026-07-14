@@ -131,7 +131,7 @@ const SOURCE_CATEGORIES: SourceCategory[] = [
 const DataSourcesSection: React.FC = () => (
   <section
     id="data-sources"
-    className="relative py-24 px-6 bg-[#040816] border-t border-[rgba(255,255,255,0.03)]"
+    className="relative py-24 px-6 bg-[var(--deep)] border-t border-[rgba(255,255,255,0.03)]"
   >
     <div className="max-w-[1280px] mx-auto">
 

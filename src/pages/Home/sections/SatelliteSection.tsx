@@ -175,7 +175,7 @@ const SatelliteSection: React.FC = () => {
   ];
 
   return (
-    <section id="map" className="relative bg-[#020510] py-14 border-t border-[rgba(255,255,255,0.03)]">
+    <section id="map" className="relative bg-[var(--void)] py-14 border-t border-[rgba(255,255,255,0.03)]">
 
       {/* ── Section Header ──────────────────────────────────────────── */}
       <div className="max-w-[1280px] mx-auto px-6 mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -201,10 +201,10 @@ const SatelliteSection: React.FC = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={DEFAULT_VIEWPORT}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="flex bg-[#070D1E] p-1 rounded-lg border border-[rgba(255,255,255,0.06)] overflow-x-auto"
+          className="flex bg-[var(--surface-01)] p-1 rounded-lg border border-[rgba(255,255,255,0.06)] overflow-x-auto"
         >
           {/* View Toggle */}
-          <div className="flex bg-[#070D1E] p-1 rounded-lg border border-[rgba(255,255,255,0.06)] overflow-hidden mr-4">
+          <div className="flex bg-[var(--surface-01)] p-1 rounded-lg border border-[rgba(255,255,255,0.06)] overflow-hidden mr-4">
             {(['India', 'Asia', 'Global'] as const).map((view) => (
               <button
                 key={view}

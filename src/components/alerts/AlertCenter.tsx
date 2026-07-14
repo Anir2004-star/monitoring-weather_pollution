@@ -83,7 +83,7 @@ const AlertCenter: React.FC = () => {
   const criticalCount = MOCK_ALERTS.filter(a => a.severity === 'Critical').length;
 
   return (
-    <section id="alerts" className="relative py-14 px-6 bg-[#020510] border-t border-[rgba(255,255,255,0.03)]">
+    <section id="alerts" className="relative py-14 px-6 bg-[var(--void)] border-t border-[rgba(255,255,255,0.03)]">
       <div className="max-w-[1280px] mx-auto">
         
         {/* ── Top Command Bar ── */}
@@ -102,7 +102,7 @@ const AlertCenter: React.FC = () => {
           </div>
 
           <div className="flex gap-4 flex-wrap">
-            <div className="bg-[#070D1E] border border-[rgba(255,255,255,0.05)] rounded-lg px-4 py-2 flex items-center gap-3">
+            <div className="bg-[var(--surface-01)] border border-[rgba(255,255,255,0.05)] rounded-lg px-4 py-2 flex items-center gap-3">
               <span className="text-[10px] text-[#3D4F70] uppercase font-mono tracking-widest">Active</span>
               <span className="text-[14px] font-bold text-[#4DEEEA] mono-data">{activeCount}</span>
             </div>
@@ -110,7 +110,7 @@ const AlertCenter: React.FC = () => {
               <span className="text-[10px] text-[#ff3b30] uppercase font-mono tracking-widest">Critical</span>
               <span className="text-[14px] font-bold text-[#ff3b30] mono-data">{criticalCount}</span>
             </div>
-            <div className="bg-[#070D1E] border border-[rgba(255,255,255,0.05)] rounded-lg px-4 py-2 flex items-center gap-3">
+            <div className="bg-[var(--surface-01)] border border-[rgba(255,255,255,0.05)] rounded-lg px-4 py-2 flex items-center gap-3">
               <span className="text-[10px] text-[#3D4F70] uppercase font-mono tracking-widest">Confidence</span>
               <span className="text-[14px] font-bold text-[#E8F0FF] mono-data">92%</span>
             </div>

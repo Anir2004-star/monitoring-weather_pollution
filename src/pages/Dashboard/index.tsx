@@ -15,13 +15,13 @@ const Dashboard: React.FC = () => {
 
   return (
     <PageLayout>
-      <div className="pt-24 pb-8 bg-[#020617] px-6 md:px-10">
+      <div className="pt-24 pb-8 bg-[var(--void)] px-6 md:px-10">
         <div className="max-w-[1280px] mx-auto">
           <div className="flex flex-col gap-2 mb-8">
             <h1 className="text-3xl font-bold text-white tracking-tight" style={{ fontFamily: '"Inter", sans-serif' }}>
               Live Intelligence Dashboard
             </h1>
-            <p className="text-[#8B9CC8]">Real-time atmospheric telemetry and air quality analytics.</p>
+            <p className="text-[var(--text-secondary)]">Real-time atmospheric telemetry and air quality analytics.</p>
           </div>
         </div>
       </div>

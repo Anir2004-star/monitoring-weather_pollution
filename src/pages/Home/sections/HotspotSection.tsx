@@ -43,7 +43,7 @@ const HotspotSection: React.FC = () => {
   }, [sortBy]);
 
   return (
-    <section id="hotspots" className="relative py-14 px-6 bg-[#020510] border-t border-[rgba(255,255,255,0.03)]">
+    <section id="hotspots" className="relative py-14 px-6 bg-[var(--void)] border-t border-[rgba(255,255,255,0.03)]">
       <div className="max-w-[1280px] mx-auto">
 
         {/* ── Header + Sort Controls ────────────────────────────── */}
@@ -58,7 +58,7 @@ const HotspotSection: React.FC = () => {
           <div className="h-px flex-grow bg-[rgba(255,255,255,0.06)]" />
 
           {/* Sort controls */}
-          <div className="flex items-center gap-1 bg-[#070D1E] p-1 rounded-lg border border-[rgba(255,255,255,0.06)]">
+          <div className="flex items-center gap-1 bg-[var(--surface-01)] p-1 rounded-lg border border-[rgba(255,255,255,0.06)]">
             {SORT_OPTIONS.map((opt) => (
               <button
                 key={opt.key}

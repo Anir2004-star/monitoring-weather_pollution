@@ -21,7 +21,7 @@ const InsightsSection: React.FC = () => {
   const maxAQI = Math.max(...mockAnalytics.cityComparison.map(c => c.aqi));
 
   return (
-    <section id="analytics" className="relative py-24 px-6 bg-[#040816]">
+    <section id="analytics" className="relative py-24 px-6 bg-[var(--deep)]">
       <div className="max-w-[1280px] mx-auto">
 
         {/* Header */}

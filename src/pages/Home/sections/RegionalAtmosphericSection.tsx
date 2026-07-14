@@ -58,7 +58,7 @@ const RegionalAtmosphericSection: React.FC = () => {
   const aqiLevel = getAQILevel(aqiData.aqi);
 
   return (
-    <section id="regional" className="relative py-16 px-6 bg-[#040816] border-t border-[rgba(255,255,255,0.03)]">
+    <section id="regional" className="relative py-16 px-6 bg-[var(--deep)] border-t border-[rgba(255,255,255,0.03)]">
       <div className="max-w-[1280px] mx-auto">
 
         {/* ── Section Header ─────────────────────────────────────────────── */}

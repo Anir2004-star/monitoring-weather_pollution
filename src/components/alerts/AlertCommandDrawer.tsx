@@ -50,7 +50,7 @@ const AlertCommandDrawer: React.FC<AlertCommandDrawerProps> = ({ alert, isOpen, 
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: '100%', opacity: 0 }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed top-0 right-0 h-full w-[400px] max-w-[90vw] z-50 flex flex-col bg-[#040816] border-l border-[rgba(255,255,255,0.08)] shadow-2xl"
+            className="fixed top-0 right-0 h-full w-[400px] max-w-[90vw] z-50 flex flex-col bg-[var(--deep)] border-l border-[rgba(255,255,255,0.08)] shadow-2xl"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-[rgba(255,255,255,0.05)]">
@@ -143,7 +143,7 @@ const AlertCommandDrawer: React.FC<AlertCommandDrawerProps> = ({ alert, isOpen, 
             </div>
 
             {/* Footer Action */}
-            <div className="p-6 border-t border-[rgba(255,255,255,0.05)] bg-[#070D1E]">
+            <div className="p-6 border-t border-[rgba(255,255,255,0.05)] bg-[var(--surface-01)]">
               <div className="text-[10px] text-[#8B9CC8] uppercase font-mono mb-3">Recommended Action</div>
               <button className="w-full py-3 px-4 rounded bg-[#E8F0FF] text-[#040816] font-bold text-[13px] tracking-wide uppercase hover:bg-white transition-colors">
                 {alert.action}

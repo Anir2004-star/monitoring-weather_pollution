@@ -73,7 +73,7 @@ const FLOW_NODES: FlowNode[] = [
 const PollutionFlowSection: React.FC = () => (
   <section
     id="pollution-flow"
-    className="relative py-24 px-6 bg-[#020510] border-t border-[rgba(255,255,255,0.03)] overflow-hidden"
+    className="relative py-24 px-6 bg-[var(--void)] border-t border-[rgba(255,255,255,0.03)] overflow-hidden"
   >
     {/* Background gradient accent */}
     <div
