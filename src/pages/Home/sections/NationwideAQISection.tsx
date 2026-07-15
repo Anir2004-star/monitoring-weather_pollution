@@ -30,13 +30,6 @@ const NationwideAQISection: React.FC = () => (
         <h2 className="text-[14px] font-semibold tracking-[0.12em] uppercase text-[#8B9CC8]">
           Nationwide Air Quality
         </h2>
-        <span className="text-[11px] font-medium tracking-[0.06em] text-[#3D4F70] uppercase flex items-center gap-2">
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-[#00E676]" />
-            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#00E676]" />
-          </span>
-          Last sync: 2m
-        </span>
       </motion.div>
 
       <div className="h-[1px] w-full bg-[rgba(255,255,255,0.06)] mb-8" />

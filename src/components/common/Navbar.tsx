@@ -1,16 +1,33 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 
-const LINKS = [
-  { label: 'Home',          href: '/' },
-  { label: 'Platform',      href: '/#platform' },
-  { label: 'Architecture',  href: '/#architecture' },
+const SECTIONS = [
+  { label: 'Home', href: '/' },
+  { label: 'Dashboard Overview', href: '/dashboard' },
+  { label: 'Nationwide AQI', href: '/dashboard#overview' },
+  { label: 'Regional Analysis', href: '/dashboard#regional' },
+  { label: 'Satellite Map', href: '/dashboard#map' },
+  { label: 'Pollution Transport', href: '/dashboard#pollution-transport' },
+  { label: 'Forecast', href: '/dashboard#forecast' },
+  { label: 'Alerts', href: '/dashboard#alerts' },
 ];
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -31,29 +48,66 @@ const Navbar: React.FC = () => {
         transition: 'all 0.4s ease',
       }}
     >
-      {/* Logo */}
-      <Link to="/" className="flex items-center gap-3 group">
-        <span className="text-[14px] font-semibold tracking-[0.15em] text-[var(--ei-ivory)]">
-          ATMOS
-        </span>
-      </Link>
-
-      {/* Nav links */}
-      <nav className="hidden md:flex items-center gap-8 bg-[rgba(255,255,255,0.03)] px-6 py-2 rounded-full border border-[rgba(255,255,255,0.05)] backdrop-blur-md">
-        {LINKS.map(({ label, href }) => {
-          const isHash = href.includes('#');
-          const toPath = isHash ? href : href;
-          return (
-            <Link
-              key={label}
-              to={toPath}
-              className="text-[13px] font-medium tracking-wide transition-colors duration-200 text-[#8B9CC8] hover:text-[var(--ei-accent-primary)]"
+      <div className="flex items-center gap-12">
+        {/* Hamburger Menu & Logo */}
+        <div className="flex items-center gap-6" ref={menuRef}>
+          <div className="relative">
+            <button 
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="p-2 -ml-2 text-[#A59C8C] hover:text-[var(--ei-accent-primary)] transition-colors flex flex-col justify-center gap-[5px]"
+              aria-label="Menu"
             >
-              {label}
-            </Link>
-          );
-        })}
-      </nav>
+              <span className={`block h-[2px] w-5 bg-current transition-transform duration-300 ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
+              <span className={`block h-[2px] w-5 bg-current transition-opacity duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
+              <span className={`block h-[2px] w-5 bg-current transition-transform duration-300 ${menuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
+            </button>
+
+            {/* Dropdown Menu */}
+            <AnimatePresence>
+              {menuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-full mt-4 left-0 w-[240px] bg-[var(--surface-01)] border border-[rgba(255,255,255,0.06)] rounded-xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] overflow-hidden"
+                >
+                  <div className="flex flex-col py-2">
+                    {SECTIONS.map((section, idx) => {
+                      const isHash = section.href.includes('#');
+                      return (
+                        <Link
+                          key={idx}
+                          to={section.href}
+                          onClick={(e) => {
+                            setMenuOpen(false);
+                            if (isHash && location.pathname === '/dashboard') {
+                              e.preventDefault();
+                              const id = section.href.split('#')[1];
+                              document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+                            }
+                          }}
+                          className="px-5 py-3 text-[13px] font-medium tracking-wide text-[#A59C8C] hover:text-[var(--ei-ivory)] hover:bg-[rgba(255,255,255,0.03)] transition-all"
+                        >
+                          {section.label}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          <Link to="/" className="flex items-center gap-3 group">
+            <span className="text-[14px] font-semibold tracking-[0.15em] text-[var(--ei-ivory)]">
+              ATMOS
+            </span>
+          </Link>
+        </div>
+      </div>
+
+      {/* Nav links removed as requested */}
 
       {/* Actions */}
       <div className="flex items-center gap-4">
@@ -64,15 +118,6 @@ const Navbar: React.FC = () => {
           >
             Launch Dashboard
           </Link>
-        )}
-        {location.pathname === '/dashboard' && (
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[rgba(0,230,118,0.1)] border border-[rgba(0,230,118,0.2)]">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-[#00E676]" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00E676]" />
-            </span>
-            <span className="text-[11px] font-bold tracking-[0.12em] text-[#00E676]">LIVE</span>
-          </div>
         )}
       </div>
     </motion.header>
