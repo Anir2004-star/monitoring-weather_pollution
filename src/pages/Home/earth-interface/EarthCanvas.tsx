@@ -1,6 +1,6 @@
 import React, { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Sphere, useTexture, Html } from '@react-three/drei';
+import { Sphere, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 
 interface EarthCanvasProps {
@@ -238,15 +238,7 @@ const EarthModel: React.FC<EarthCanvasProps> = ({ earthGroupRef }) => {
             <lineBasicMaterial attach="material" color="#B8862F" transparent opacity={0} />
           </line>
           
-          <Html center distanceFactor={15} position={[0.2, 0.3, 0]} className="pointer-events-auto">
-            <div className="group flex flex-col items-start justify-center p-3 rounded-md bg-[#15120F] border border-[rgba(255,255,255,0.06)] shadow-2xl min-w-max transition-transform duration-500 hover:-translate-y-2 hover:rotate-1">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-[var(--ei-success)] animate-pulse shadow-[0_0_8px_var(--ei-success)]" />
-                <span className="text-[9px] text-[var(--ei-ash)] font-telemetry uppercase tracking-widest">INSAT-3DR</span>
-              </div>
-              <span className="text-[12px] text-[var(--ei-ivory)] font-body font-medium">Satellite Active</span>
-            </div>
-          </Html>
+
         </group>
 
         {/* Satellite 2: Ground Stations */}
@@ -264,12 +256,7 @@ const EarthModel: React.FC<EarthCanvasProps> = ({ earthGroupRef }) => {
             <lineBasicMaterial attach="material" color="#B8862F" transparent opacity={0} />
           </line>
           
-          <Html center distanceFactor={15} position={[-0.2, -0.3, 0]} className="pointer-events-auto">
-            <div className="group flex flex-col items-end justify-center p-3 rounded-md bg-[#15120F] border border-[rgba(255,255,255,0.06)] shadow-2xl min-w-max transition-transform duration-500 hover:translate-y-2 hover:-rotate-1">
-              <span className="text-[15px] text-[var(--ei-accent-primary)] font-editorial mb-0.5">847</span>
-              <span className="text-[9px] text-[var(--ei-ash)] font-telemetry uppercase tracking-widest">Ground Stations</span>
-            </div>
-          </Html>
+
         </group>
 
         {/* Satellite 3: Prediction Confidence */}
@@ -287,12 +274,7 @@ const EarthModel: React.FC<EarthCanvasProps> = ({ earthGroupRef }) => {
             <lineBasicMaterial attach="material" color="#B8862F" transparent opacity={0} />
           </line>
           
-          <Html center distanceFactor={15} position={[0.3, -0.1, 0]} className="pointer-events-auto">
-            <div className="group flex flex-col items-start justify-center p-3 rounded-md bg-[#15120F] border border-[rgba(255,255,255,0.06)] shadow-2xl min-w-max transition-transform duration-500 hover:translate-x-2">
-              <span className="text-[15px] text-[var(--ei-ivory)] font-body font-bold mb-0.5">94.2%</span>
-              <span className="text-[9px] text-[var(--ei-ash)] font-telemetry uppercase tracking-widest">Prediction Confidence</span>
-            </div>
-          </Html>
+
         </group>
 
       </group>
